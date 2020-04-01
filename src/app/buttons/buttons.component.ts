@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, timer } from 'rxjs';
+import { interval, timer, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-buttons',
@@ -11,17 +11,22 @@ export class ButtonsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
-    let interval$ = interval(1000);
-    let timer$ = timer(3000,1000);
-
-    interval$.subscribe( val => {
-      console.log(val + " i am a stream Definition")
-    });
-
+    
+   /* let timer$ = timer(3000,1000);
     timer$.subscribe( val =>{
       console.log(val + " i am a -timer- operator, also called function from reactive extension")
+    });
+
+    */
+
+    let click$ = fromEvent(document,'click');
+    click$.subscribe ( evt => {
+      console.log("gecklickt " + evt.target.dispatchEvent)
     })
+
+
+
+
 
 
   }

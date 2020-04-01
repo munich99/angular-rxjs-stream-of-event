@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval } from 'rxjs';
+import { interval, timer } from 'rxjs';
 
 @Component({
   selector: 'app-buttons',
@@ -13,25 +13,16 @@ export class ButtonsComponent implements OnInit {
   ngOnInit() {
 
     let interval$ = interval(1000);
+    let timer$ = timer(3000,1000);
 
     interval$.subscribe( val => {
       console.log(val + " i am a stream Definition")
     });
-/*
-    document.addEventListener('click', evt => { 
 
-      console.log(evt, 'I am tiggert by Eventllistener');
+    timer$.subscribe( val =>{
+      console.log(val + " i am a -timer- operator, also called function from reactive extension")
+    })
 
-      setTimeout(() => {
-        let counter = 1;
-          console.log('I am 3rd Value Stream and i am starting 2rd Stream of Value');
-          setInterval(() => {
-            counter++;
-            console.log(counter);
-          }, 1000);
-      }, 3000 ); 
-
-    }); */
 
   }
 

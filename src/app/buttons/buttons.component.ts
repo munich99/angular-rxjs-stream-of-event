@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-buttons',
@@ -11,8 +12,12 @@ export class ButtonsComponent implements OnInit {
 
   ngOnInit() {
 
-    
+    let interval$ = interval(1000);
 
+    interval$.subscribe( val => {
+      console.log(val + " i am a stream Definition")
+    });
+/*
     document.addEventListener('click', evt => { 
 
       console.log(evt, 'I am tiggert by Eventllistener');
@@ -26,15 +31,7 @@ export class ButtonsComponent implements OnInit {
           }, 1000);
       }, 3000 ); 
 
-    });
-
-    
-
-
-
-
-
-
+    }); */
 
   }
 
